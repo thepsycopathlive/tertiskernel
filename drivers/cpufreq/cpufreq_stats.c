@@ -234,6 +234,12 @@ void cpufreq_stats_record_transition(struct cpufreq_policy *policy,
 
 	cpufreq_stats_update(stats);
 
+	if (old_index == new_index)
+		goto put_policy;
+
+	cpufreq_stats_update(stats);
+
+	spin_lock(&cpufreq_stats_lock);
 	stats->last_index = new_index;
 	stats->trans_table[old_index * stats->max_state + new_index]++;
 	stats->total_trans++;
