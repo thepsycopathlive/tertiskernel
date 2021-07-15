@@ -1152,9 +1152,10 @@ static int usb_bam_disconnect_ipa_prod(
 		if (ctx->pipes_enabled_per_bam == 0)
 			log_event_err("%s: wrong pipes enabled counter for bam=%d\n",
 				__func__, pipe_connect->bam_type);
-		else
+		else {
 			ctx->pipes_enabled_per_bam -= 1;
-		spin_unlock(&ctx->usb_bam_lock);
+			spin_unlock(&ctx->usb_bam_lock);
+		}
 	}
 
 	return 0;
@@ -1273,9 +1274,10 @@ retry:
 		if (ctx->pipes_enabled_per_bam == 0)
 			log_event_err("%s: wrong pipes enabled counter for bam=%d\n",
 				 __func__, pipe_connect->bam_type);
-		else
+		else {
 			ctx->pipes_enabled_per_bam -= 1;
-		spin_unlock(&ctx->usb_bam_lock);
+			spin_unlock(&ctx->usb_bam_lock);
+		}
 	}
 
 	pipe_connect->ipa_clnt_hdl = -1;
@@ -2876,7 +2878,7 @@ static struct msm_usb_bam_data *usb_bam_dt_to_data(
 	struct device_node *node = pdev->dev.of_node;
 	int rc = 0;
 	u8 i = 0;
-	u32 bam = DWC3_CTRL;
+	u32 bam;
 	u32 addr = 0;
 	u32 threshold, max_connections = 0;
 	static struct usb_bam_pipe_connect *usb_bam_connections;
@@ -2886,9 +2888,12 @@ static struct msm_usb_bam_data *usb_bam_dt_to_data(
 	if (!usb_bam_data)
 		return NULL;
 
-	/* override bam-type if specified, default is dwc3 */
-	of_property_read_u32(node, "qcom,bam-type", &bam);
-
+	rc = of_property_read_u32(node, "qcom,bam-type", &bam);
+	if (rc) {
+		log_event_err("%s: bam type is missing in device tree\n",
+			__func__);
+		return NULL;
+	}
 	if (bam >= MAX_BAMS) {
 		log_event_err("%s: Invalid bam type %d in device tree\n",
 			__func__, bam);
