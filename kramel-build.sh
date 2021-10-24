@@ -27,6 +27,7 @@ curl -s -X POST https://api.telegram.org/bot${TOKEN}/sendMessage -d text="HyperX
 				ARCH=arm64 \
 				LOCALVERSION=-${VERSION}-${DEVICES}-${TANGGAL} \
 				CC=clang \
+				LD=ld.lld \
 				AR="llvm-ar" \
 				NM="llvm-nm" \OBJCOPY="llvm-objcopy" \
 				OBJDUMP="llvm-objdump" \
