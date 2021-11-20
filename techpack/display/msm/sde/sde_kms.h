@@ -49,7 +49,7 @@
  */
 #define SDE_DEBUG(fmt, ...)                                                \
 	do {                                                               \
-		pr_debug(fmt, ##__VA_ARGS__);
+		pr_debug(fmt, ##__VA_ARGS__);                                \
 	} while (0)
 
 /**
