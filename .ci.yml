@@ -1,0 +1,15 @@
+ kind: pipeline 
+name : xKernel Compiler 
+version: rev1.5_template 
+steps: 
+ - name: xKernel Compilation 
+   image: xyzuan/xdocker:latest 
+   environment: 
+     token: 
+       from_secret: token 
+     chat_id: 
+       from_secret: chat_id 
+   commands: 
+     - git clone --depth=1 https://github.com/thepsycopathlive/tertiskernel -b 11.0 alioth 
+     - cd alioth 
+     - bash .circleci/build.sh
