@@ -6,7 +6,7 @@ apt install cpio
 apt update && apt upgrade && apt install gcc-aarch64-linux-gnu &&
 apt install build-essential dkms linux-headers-$(uname -r) android-tools-adb android-tools-fastboot bc bison ca-certificates ccache clang cmake curl file flex gcc g++ git libelf-dev libssl-dev make ninja-build python3 texinfo u-boot-tools zlib1g-dev python vim repo
 echo "Done"
-IMAGE=$(pwd)/out/arch/arm64/boot/Image.gz-dtb
+IMAGE=$(pwd)/out/arch/arm64/boot/Image.gz
 TANGGAL=$(date +"%F-%S")
 START=$(date +"%s")
 KERNEL_DIR=$(pwd)
