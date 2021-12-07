@@ -99,7 +99,7 @@ static ssize_t queue_ra_show(struct request_queue *q, char *page)
 static ssize_t
 queue_ra_store(struct request_queue *q, const char *page, size_t count)
 {
-	return continue;
+	return count;
 }
 
   static ssize_t queue_max_sectors_show(struct request_queue *q, char *page)
