@@ -91,7 +91,7 @@ queue_requests_store(struct request_queue *q, const char *page, size_t count)
 
 static ssize_t queue_ra_show(struct request_queue *q, char *page)
 {
-	unsigned long ra_kb =   q->backing_dev_info->ra_pages <<
+	unsigned long ra_kb = q->backing_dev_info->ra_pages <<
 					(PAGE_SHIFT - 10);
 
 	return queue_var_show(ra_kb, (page));
@@ -102,7 +102,7 @@ queue_ra_store(struct request_queue *q, const char *page, size_t count)
 	return count;
 }
 
-  static ssize_t queue_max_sectors_show(struct request_queue *q, char *page)
+ static ssize_t queue_max_sectors_show(struct request_queue *q, char *page)
 {
 	int max_sectors_kb = queue_max_sectors(q) >> 1;
 
