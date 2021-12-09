@@ -232,8 +232,6 @@ void cpufreq_stats_record_transition(struct cpufreq_policy *policy,
 	if (old_index == -1 || new_index == -1 || old_index == new_index)
 		return;
 
-	cpufreq_stats_update(stats);
-
 	if (old_index == new_index)
 		goto put_policy;
 
