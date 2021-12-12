@@ -63,7 +63,7 @@ function finerr() {
     # Compile plox
     function compile() {
         export KBUILD_BUILD_USER=Rajat && export KBUILD_BUILD_HOST=LinuX
-export ARCH=arm64 && export LD_LIBRARY_PATH="/home/runner/proton-clang/bin/../lib:$PATH" && export DTC_EXT=/home/runner/test/dtc-aosp && make -C $(pwd) -j$(nproc) AR=llvm-ar NM=llvm-nm OBJCOPY=llvm-objcopy OBJDUMP=llvm-objdump STRIP=llvm-strip O=out t_defconfig && PATH="/home/runner/proton-clang/bin:${PATH}" && make -j$(nproc) O=out ARCH=arm64 CC=clang AR=llvm-ar NM=llvm-nm OBJCOPY=llvm-objcopy OBJDUMP=llvm-objdump STRIP=llvm-strip CLANG_TRIPLE=aarch64-linux-gnu- CROSS_COMPILE=aarch64-linux-gnu- CROSS_COMPILE_ARM32=arm-linux-gnueabi-
+export ARCH=arm64 && export LD_LIBRARY_PATH="/home/runner/proton-clang/bin/../lib:$PATH" && export DTC_EXT=/home/runner/test/dtc-aosp && make -C $(pwd) -j$(nproc) AR=llvm-ar NM=llvm-nm OBJCOPY=llvm-objcopy OBJDUMP=llvm-objdump STRIP=llvm-strip O=out a_defconfig && PATH="/home/runner/proton-clang/bin:${PATH}" && make -j$(nproc) O=out ARCH=arm64 CC=clang AR=llvm-ar NM=llvm-nm OBJCOPY=llvm-objcopy OBJDUMP=llvm-objdump STRIP=llvm-strip CLANG_TRIPLE=aarch64-linux-gnu- CROSS_COMPILE=aarch64-linux-gnu- CROSS_COMPILE_ARM32=arm-linux-gnueabi-
     if ! [ -a "$IMAGE" ]; then
             finerr
                     exit 1
