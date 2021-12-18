@@ -9,6 +9,3 @@
 
 /* Instantiate tracepoints */
 #define CREATE_TRACE_POINTS
-#include "kgsl_trace_power.h"
-
-EXPORT_TRACEPOINT_SYMBOL(gpu_frequency);
